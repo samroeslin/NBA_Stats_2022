@@ -7,14 +7,60 @@ Inspired from the course R Programming A-ZT: R For Data Science With Real Exerci
 
 Data updated by Sam Roeslin on 9 May 2022
 
+
 ```{r}
 Players
 ```
 
-Games
-rownames(Games)
-colnames(Games)
+# FieldGoals
+```{r}
+par(mar=c(3.1, 4.1, 2.1, 9.1), xpd=TRUE) #change margins (bottom, left, top, and right)
+matplot(t(FieldGoals), type="b", pch=15:18, col=c(1:4,6))
+op <- par(cex = 0.7) # change fontsize
+legend("right", inset = c(-0.35, 0), legend = Players, pch=15:18, col=c(1:4,6), horiz=F)
+```
 
+# Accuracy of each player
+FG_per <- FieldGoals/FieldGoalAttempts
+
+```{r}
+round(FG_per,3)
+```
+
+```{r}
+par(mar=c(3.1, 4.1, 2.1, 9.1), xpd=TRUE) #change margins (bottom, left, top, and right)
+matplot(t(FG_per), type="b", pch=15:18, col=c(1:4,6))
+op <- par(cex = 0.7) # change fontsize
+legend("right", inset = c(-0.35, 0), legend = Players, pch=15:18, col=c(1:4,6), horiz=F)
+```
+
+#Total Playtime
+PlayTime <- Games*MinutesPlayed
+
+```{r}
+PlayTime
+```
+
+
+#Salary (adjusted for inflation - May 2022)
+```{r}
+Salary
+```
+
+
+#Salary by minute played
+Salary_per_min <- Salary/PlayTime
+
+```{r}
+Salary_per_min
+```
+
+```{r}
+par(mar=c(3.1, 4.1, 2.1, 9.1), xpd=TRUE) #change margins (bottom, left, top, and right)
+matplot(t(Salary_per_min), type="b", pch=15:18, col=c(1:4,6))
+op <- par(cex = 0.7) # change fontsize
+legend("right", inset = c(-0.35, 0), legend = Players, pch=15:18, col=c(1:4,6), horiz=F)
+```
 
 <!-- Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*. -->
 
